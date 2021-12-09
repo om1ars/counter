@@ -1,0 +1,160 @@
+body {
+  font-family: Raleway, sans-serif;
+  background: lighten(#3498db, 40%);
+  padding: 30px;
+}
+
+// Counter
+.counter ul {
+  list-style: none;
+  clear: both;
+  &::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+  li {
+    float: left;
+    width: 70px;
+    margin: 5px;
+    padding: 5px;
+    text-align: center;
+    box-sizing: border-box;
+    color: #a2a2a2;
+    border: 2px solid;
+    border-radius: 4px;
+    box-shadow: 0 0 2px #a2a2a2;
+    cursor: pointer;
+    .count {
+      font-size: 0.8em;
+    }
+  }
+}
+
+.counter1 li {
+  &[data-action="like"][data-status="voted"] {
+    color: #1abc9c;
+    box-shadow: 0 0 2px #1abc9c;
+  }
+  &[data-action="dislike"][data-status="voted"] {
+    color: #f25757;
+    box-shadow: 0 0 2px #f25757;
+  }
+  .icon {
+    font-size: 35px;
+    display: block;
+    &::before {
+      font-family: fontAwesome;
+    }
+  }
+  &[data-action="like"] .icon::before {
+    content: "\f087";
+  }
+  &[data-action="dislike"] .icon::before {
+    content: "\f088";
+  }
+}
+
+.counter2 li {
+  &[data-status="voted"] {
+    color: #1abc9c;
+    box-shadow: 0 0 2px #1abc9c;
+    img {
+      -webkit-filter: saturate(100%);
+      filter: saturate(100%);
+    }
+  }
+  img {
+    width: 50px;
+    height: 50px;
+    -webkit-filter: saturate(20%);
+    filter: saturate(20%);
+  }
+}
+
+// To Do: Tooltip
+.counter li {
+  position: relative;
+  
+  &::before {
+    content: attr(data-action);
+    position: absolute;
+    left: 0;
+    width: 100%;
+    padding: 10px 0;
+    box-shadow: 0 2px 7px rgba(0, 0, 0, 0.3);
+    background: #efefef;
+    color: #555;
+    box-shadow: 0 2px 7px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    font-size: 0.8em;
+    text-transform: capitalize;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 9999;
+  }
+  &:hover::before {
+    opacity: 1;
+    visibility: visible;
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    margin-left: -7px;
+    height: 0;
+    width: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 10000;
+  }
+  &:hover::after {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+.counter[data-tooltip="top"] li {
+  &::before {
+    bottom: 100%;
+    margin-bottom: 0px;
+  }
+  &::after {
+    border-top: 7px solid #efefef;
+    bottom: 100%;
+    margin-bottom: -6px;
+  }
+  &:hover {
+    &::before {
+      margin-bottom: 7px;
+    }
+    &::after {
+      margin-bottom: 1px;
+    }
+  }
+}
+.counter[data-tooltip="bottom"] li {
+  &::before {
+    top: 100%;
+    margin-top: 0px;
+  }
+  &::after {
+    border-bottom: 7px solid #efefef;
+    top: 100%;
+    margin-top: -6px;
+  }
+  &:hover {
+    &::before {
+      margin-top: 7px;
+    }
+    &::after {
+      margin-top: 1px;
+    }
+  }
+}
+.icon-back {
+  fill: green;
+}

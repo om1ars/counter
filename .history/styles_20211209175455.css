@@ -1,0 +1,32 @@
+#hitCounter {
+  border: solid 2px black;
+  background: #421;
+  color: #46f;
+  font-size: 17pt;
+  padding: 10px;
+}
+
+body {
+  background: #bbb;
+}
+
+#threads li img {
+  right: 5px;
+  top: 5px;
+  position: absolute;
+  float: right;
+  border: solid 1px red;
+}
+
+#threads li {
+  font-size: 13pt;
+  position: relative;
+  max-width: 400px;
+  height: 150px;
+  text-align: left;
+  background: #ccc;
+  color: black;
+  margin-bottom: 10px;
+  padding: 10px;
+  list-style: none;
+}
